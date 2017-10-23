@@ -7,7 +7,7 @@ from django_task.miko.user.forms import UserCreateForm, UserEditForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .models import User
-from user.templatetags.user_tags import allowed_age, fizzbuzz
+from user.templatetags.user_tags import allowed_age, bizzfuzz
 
 
 class BaseUserView:
@@ -55,6 +55,6 @@ def export_user_list_csv(request):
             user.birth_day,
             allowed_age(user),
             user.random_number,
-            fizzbuzz(user.random_number)
+            bizzfuzz(user.random_number)
         ])
     return response

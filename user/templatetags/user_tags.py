@@ -15,12 +15,12 @@ def allowed_age(user):
 
 
 @register.filter
-def fizzbuzz(n):
+def bizzfuzz(n):
     if n % 3 == 0 and n % 5 == 0:
-        return 'FizzBuzz'
+        return 'BizzFuzz'
     elif n % 3 == 0:
-        return 'Fizz'
+        return 'Bizz'
     elif n % 5 == 0:
-        return 'Buzz'
+        return 'Fuzz'
     else:
         return str(n)
