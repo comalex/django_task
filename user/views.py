@@ -1,9 +1,8 @@
 import csv
 
-from django.core import serializers
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django_task.miko.user.forms import UserCreateForm, UserEditForm
+from user.forms import UserCreateForm, UserEditForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .models import User

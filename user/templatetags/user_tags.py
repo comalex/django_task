@@ -1,6 +1,6 @@
 from django import template
 from django.utils.translation import ugettext_lazy as _
-from django_task.miko.user.utils import calculate_age
+from user.utils import calculate_age
 
 register = template.Library()
 
