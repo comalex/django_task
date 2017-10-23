@@ -1,9 +1,13 @@
+import csv
+
+from django.core import serializers
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django_task.miko.user.forms import UserCreateForm, UserEditForm
 from django.urls import reverse_lazy
-
+from django.http import HttpResponse
 from .models import User
+from user.templatetags.user_tags import allowed_age, fizzbuzz
 
 
 class BaseUserView:
@@ -35,3 +39,22 @@ class UserEdit(BaseUserView, UpdateView):
 class UserDelete(BaseUserView, DeleteView):
     model = User
     success_url = reverse_lazy('user:list')
+
+
+def export_user_list_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="user_list.csv"'
+    writer = csv.writer(response)
+
+    header = ["Username", "Birthday", "Eligible", "Random Number", "BizzFuzz"]
+    writer.writerow(header)
+
+    for user in User.objects.all():
+        writer.writerow([
+            user.username,
+            user.birth_day,
+            allowed_age(user),
+            user.random_number,
+            fizzbuzz(user.random_number)
+        ])
+    return response
