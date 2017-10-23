@@ -1,9 +1,27 @@
 {% extends "base.html" %}
+{% load user_tags %}
+
+{% block title %}User list{% endblock %}
+
 
 {% block content %}
-    {% for user in user_list %}
-          <a href="">
-            <h4>{{ user.username }}</h4>
-          </a>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>| Birthday</th>
+            <th>| Eligible</th>
+            <th>| Random Number</th>
+            <th>| BizzFuzz</th>
+        </tr>
+
+        {% for user in user_list %}
+            <tr>
+                <td><a href="{{ user.get_absolute_url }}">{{ user.username }}</a></td>
+                <td>| {{ user.birth_day|date:"m/d/Y" }}</td>
+                <td>| {% allowed_age user %}</td>
+                <td>| {{ user.random_number }}</td>
+                <td>| {{ user.random_number|fizzbuzz }} </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

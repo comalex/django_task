@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+    <h2>Username: {{ object.username }}</h2>
+    <ul>
+        birth date: {{ object.birth_day }}
+    </ul>
+    <a href="{% url 'user:edit' username=object.username %}" role="button">Edit</a>
+
+{#    <form action="" method="post">{% csrf_token %}#}
+{#        <p>Are you sure you want to delete "{{ object }}"?</p>#}
+{#        <input type="submit" value="Confirm" />#}
+{#    </form>#}
+    <a href="{% url 'user:delete' username=object.username %}" role="button">Delete</a>
+{% endblock content %}
+

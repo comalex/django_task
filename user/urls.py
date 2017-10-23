@@ -1,8 +1,11 @@
 from django.conf.urls import url
-from django.views.generic import TemplateView
-
 from . import views
 
+
 urlpatterns = [
-    url(regex=r'^list/$', view=views.UserListView.as_view(), name='user_list'),
+    url(regex=r'^$', view=views.UserListView.as_view(), name='list'),
+    url(regex=r'^create/$', view=views.UserCreateView.as_view(), name='create'),
+    url(regex=r'^edit/(?P<username>[\w.@+-]+)/$', view=views.UserEdit.as_view(), name='edit'),
+    url(regex=r'^delete/(?P<username>[\w.@+-]+)/$', view=views.UserDelete.as_view(), name='delete'),
+    url(regex=r'^(?P<username>[\w.@+-]+)/$', view=views.UserDetailView.as_view(), name='detail'),
 ]
