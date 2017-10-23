@@ -25,8 +25,6 @@ SECRET_KEY = 'tw7v$ujkt0j@(&u7m6si(y-wmc--+@zz^o+cpq+l5vjfto)8-i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -124,3 +122,5 @@ STATIC_URL = '/static/'
 
 # Select the correct user model
 AUTH_USER_MODEL = 'user.User'
+
+ALLOWED_HOSTS = ["*"]
