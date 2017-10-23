@@ -4,7 +4,8 @@
 > cd django_task
 
 ###Docker
-> docker-compose build
+> docker-compose build 
+
 > docker-compose up
 
 ### Manual
